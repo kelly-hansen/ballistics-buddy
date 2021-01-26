@@ -10,7 +10,9 @@ body {
 header {
   height: 100vh;
   background-image: url("smoke-background.jpg");
+  background-size: cover;
   position: relative;
+  color: white;
 }
 
 header img {
