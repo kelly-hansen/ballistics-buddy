@@ -4,4 +4,23 @@
 
 body {
   margin: 0;
+  background-color: #2e2e2e;
+}
+
+header {
+  height: 100vh;
+  background-image: url("smoke-background.jpg");
+  position: relative;
+}
+
+header img {
+  width: 20rem;
+  max-width: 65%;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }
