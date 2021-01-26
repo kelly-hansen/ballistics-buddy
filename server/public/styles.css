@@ -26,3 +26,13 @@ header img {
   width: 100%;
   position: absolute;
 }
+
+.safe-shooting {
+  color: #f1e26f;
+  text-decoration: underline;
+}
+
+.safe-shooting:hover {
+  cursor: pointer;
+  color: #d8c641;
+}
