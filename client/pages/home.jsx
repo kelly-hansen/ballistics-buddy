@@ -1,19 +1,28 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
 import UnitsModal from '../components/units-modal';
+import SafetyModal from '../components/safety-modal';
 
 export default class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showUnitsModal: false
+      showUnitsModal: false,
+      showSafetyModal: false
     };
     this.toggleUnitsModal = this.toggleUnitsModal.bind(this);
+    this.toggleSafetyModal = this.toggleSafetyModal.bind(this);
   }
 
   toggleUnitsModal() {
     this.setState({
       showUnitsModal: !this.state.showUnitsModal
+    });
+  }
+
+  toggleSafetyModal() {
+    this.setState({
+      showSafetyModal: !this.state.showSafetyModal
     });
   }
 
@@ -33,11 +42,12 @@ export default class Home extends React.Component {
             </div>
             <div>
               <p className="m-0 text-center">Remember to always use</p>
-              <p className="safe-shooting m-0 text-center">Safe Shooting Practices</p>
+              <p className="safe-shooting m-0 text-center" onClick={this.toggleSafetyModal}>Safe Shooting Practices</p>
             </div>
           </div>
         </header>
         <UnitsModal show={this.state.showUnitsModal} toggle={this.toggleUnitsModal} />
+        <SafetyModal show={this.state.showSafetyModal} toggle={this.toggleSafetyModal} />
       </>
     );
   }
