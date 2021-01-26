@@ -7,9 +7,16 @@ export default class App extends React.Component {
     this.state = {
       units: null
     };
+    this.setUnits = this.setUnits.bind(this);
+  }
+
+  setUnits(units) {
+    this.setState({
+      units
+    });
   }
 
   render() {
-    return <Home />;
+    return <Home setUnits={this.setUnits} />;
   }
 }

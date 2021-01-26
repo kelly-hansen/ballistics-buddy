@@ -10,8 +10,13 @@ export default class Home extends React.Component {
       showUnitsModal: false,
       showSafetyModal: false
     };
+    this.setUnits = this.setUnits.bind(this);
     this.toggleUnitsModal = this.toggleUnitsModal.bind(this);
     this.toggleSafetyModal = this.toggleSafetyModal.bind(this);
+  }
+
+  setUnits(e) {
+    this.props.setUnits(e.target.textContent);
   }
 
   toggleUnitsModal() {
@@ -34,8 +39,8 @@ export default class Home extends React.Component {
             <img src="./bblogo.png" alt="Ballistics Buddy logo" />
             <div className="text-center">
               <p>Select Units:</p>
-              <Button variant="light" className="mr-3">MOA</Button>
-              <Button variant="light">MRAD</Button>
+              <Button variant="light" className="mr-3" onClick={this.setUnits}>MOA</Button>
+              <Button variant="light" onClick={this.setUnits}>MRAD</Button>
               <div>
                 <Button variant="light" className="mt-3" onClick={this.toggleUnitsModal}>?</Button>
               </div>
