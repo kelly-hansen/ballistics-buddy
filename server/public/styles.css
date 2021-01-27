@@ -40,3 +40,7 @@ header img {
   cursor: pointer;
   color: #d8c641;
 }
+
+.data-tabs-cont {
+  min-height: 100vh;
+}

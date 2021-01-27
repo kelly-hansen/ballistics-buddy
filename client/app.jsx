@@ -17,6 +17,6 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <Home setUnits={this.setUnits} />;
+    return <Home units={this.state.units} setUnits={this.setUnits} />;
   }
 }

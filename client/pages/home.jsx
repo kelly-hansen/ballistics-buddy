@@ -2,6 +2,7 @@ import React from 'react';
 import { Button } from 'react-bootstrap';
 import UnitsModal from '../components/units-modal';
 import SafetyModal from '../components/safety-modal';
+import DataTabs from '../components/data-tabs';
 
 export default class Home extends React.Component {
   constructor(props) {
@@ -53,6 +54,7 @@ export default class Home extends React.Component {
         </header>
         <UnitsModal show={this.state.showUnitsModal} toggle={this.toggleUnitsModal} />
         <SafetyModal show={this.state.showSafetyModal} toggle={this.toggleSafetyModal} />
+        {this.props.units && <DataTabs />}
       </>
     );
   }
