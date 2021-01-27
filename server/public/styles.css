@@ -1,0 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #2e2e2e;
+}
+
+header {
+  height: 100vh;
+  background-image: url("smoke-background.jpg");
+  background-size: cover;
+  position: relative;
+  color: white;
+}
+
+header img {
+  width: 20rem;
+  max-width: 65%;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.8);
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.units-btn {
+  width: 5rem;
+}
+
+.safe-shooting {
+  color: #f1e26f;
+  text-decoration: underline;
+}
+
+.safe-shooting:hover {
+  cursor: pointer;
+  color: #d8c641;
+}
