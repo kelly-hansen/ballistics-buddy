@@ -29,6 +29,41 @@ header img {
 
 .units-btn {
   width: 5rem;
+  height: 2.5rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid white;
+  color: white;
+  border-radius: 0.25rem;
+}
+
+.units-btn.selected {
+  background-color: white;
+  border: 2px solid white;
+  color: black;
+}
+
+.units-btn:hover {
+  background-color: white;
+  border: 2px solid white;
+  color: black;
+}
+
+.units-question {
+  font-size: 0.8rem;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid #f1e26f;
+  border-radius: 50%;
+  color: #f1e26f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.units-question:hover {
+  cursor: pointer;
+  background-color: #f1e26f;
+  color: black;
 }
 
 .safe-shooting {

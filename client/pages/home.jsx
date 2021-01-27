@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
 import UnitsModal from '../components/units-modal';
 import SafetyModal from '../components/safety-modal';
 import DataTabs from '../components/data-tabs';
@@ -40,10 +39,10 @@ export default class Home extends React.Component {
             <img src="./bblogo.png" alt="Ballistics Buddy logo" />
             <div className="text-center">
               <p>Select Units:</p>
-              <Button variant="light" className="mr-3 units-btn" onClick={this.setUnits}>MOA</Button>
-              <Button variant="light" className="units-btn" onClick={this.setUnits}>MRAD</Button>
-              <div>
-                <Button variant="light" className="mt-3" onClick={this.toggleUnitsModal}>?</Button>
+              <button className={`mr-3 units-btn${this.props.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
+              <button className={`units-btn${this.props.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
+              <div className="d-flex justify-content-center">
+                <div className="units-question mt-3" onClick={this.toggleUnitsModal}>?</div>
               </div>
             </div>
             <div>
