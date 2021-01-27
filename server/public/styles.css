@@ -35,21 +35,23 @@ header img {
   width: 5rem;
   height: 2.5rem;
   background-color: rgba(0, 0, 0, 0);
-  border: 2px solid white;
-  color: white;
+  border: 2px solid #f1e26f;
+  color: #f1e26f;
   border-radius: 1.25rem;
 }
 
 .units-button.selected {
-  background-color: white;
-  border: 2px solid white;
+  background-color: #f1e26f;
+  border: 2px solid #f1e26f;
   color: black;
 }
 
-.units-button:hover {
-  background-color: white;
-  border: 2px solid white;
+.units-button:hover,
+.units-button:focus {
+  background-color: #d8c641;
+  border: 2px solid #d8c641;
   color: black;
+  outline: none;
 }
 
 .units-question {
@@ -64,10 +66,12 @@ header img {
   align-items: center;
 }
 
-.units-question:hover {
+.units-question:hover,
+.units-question:focus {
   cursor: pointer;
-  background-color: #f1e26f;
+  background-color: #d8c641;
   color: black;
+  outline: none;
 }
 
 .safe-shooting {
@@ -85,9 +89,9 @@ header img {
 }
 
 .tab-button {
-  width: 20rem;
+  width: 15rem;
   height: 2.5rem;
-  background-color: rgba(0, 0, 0, 0);
+  background-color: #2e2e2e;
   border: 2px solid #f1e26f;
   color: #f1e26f;
   border-radius: 1.25rem;
@@ -99,8 +103,10 @@ header img {
   color: black;
 }
 
-.tab-button:hover {
-  background-color: #f1e26f;
-  border: 2px solid #f1e26f;
-  color: black;
+.tab-button:hover,
+.tab-button:focus {
+  background-color: #d8c641;
+  border: 2px solid #d8c641;
+  color: #2e2e2e;
+  outline: none;
 }
