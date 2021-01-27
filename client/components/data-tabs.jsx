@@ -4,7 +4,7 @@ import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 export default class DataTabs extends React.Component {
   render() {
     return (
-      <Container className="data-tabs-cont pt-5">
+      <Container className="data-tabs-cont pt-5" id="data-tabs">
         <Row>
           <Col>
             <Tabs defaultActiveKey="calculate">
