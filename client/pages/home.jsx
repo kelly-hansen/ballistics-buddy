@@ -39,11 +39,11 @@ export default class Home extends React.Component {
             <img src="./bblogo.png" alt="Ballistics Buddy logo" />
             <div className="text-center">
               <p>Select Units:</p>
-              <a href="#data-tabs">
-                <button className={`mr-3 units-btn${this.props.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
+              <a href="#calculate-data">
+                <button className={`mr-3 units-button${this.props.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
               </a>
-              <a href="#data-tabs">
-                <button className={`units-btn${this.props.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
+              <a href="#calculate-data">
+                <button className={`units-button${this.props.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
               </a>
               <div className="d-flex justify-content-center">
                 <div className="units-question mt-3" onClick={this.toggleUnitsModal}>?</div>

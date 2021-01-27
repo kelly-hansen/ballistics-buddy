@@ -1,20 +1,16 @@
 import React from 'react';
-import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 
 export default class DataTabs extends React.Component {
   render() {
     return (
-      <Container className="data-tabs-cont pt-5" id="data-tabs">
+      <Container className="data-tabs-cont pt-5" id="calculate-data">
         <Row>
-          <Col>
-            <Tabs defaultActiveKey="calculate">
-              <Tab eventKey="calculate" title="Calculate">
-
-              </Tab>
-              <Tab eventKey="reference-data" title="Reference Data">
-
-              </Tab>
-            </Tabs>
+          <Col className="d-flex justify-content-center">
+            <button className="tab-button">CALCULATE</button>
+          </Col>
+          <Col className="d-flex justify-content-center">
+            <button className="tab-button">REFERENCE DATA</button>
           </Col>
         </Row>
       </Container>

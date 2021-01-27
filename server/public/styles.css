@@ -31,22 +31,22 @@ header img {
   position: absolute;
 }
 
-.units-btn {
+.units-button {
   width: 5rem;
   height: 2.5rem;
   background-color: rgba(0, 0, 0, 0);
   border: 2px solid white;
   color: white;
-  border-radius: 0.25rem;
+  border-radius: 1.25rem;
 }
 
-.units-btn.selected {
+.units-button.selected {
   background-color: white;
   border: 2px solid white;
   color: black;
 }
 
-.units-btn:hover {
+.units-button:hover {
   background-color: white;
   border: 2px solid white;
   color: black;
@@ -82,4 +82,25 @@ header img {
 
 .data-tabs-cont {
   min-height: 100vh;
+}
+
+.tab-button {
+  width: 20rem;
+  height: 2.5rem;
+  background-color: rgba(0, 0, 0, 0);
+  border: 2px solid #f1e26f;
+  color: #f1e26f;
+  border-radius: 1.25rem;
+}
+
+.tab-button.selected {
+  background-color: #f1e26f;
+  border: 2px solid #f1e26f;
+  color: black;
+}
+
+.tab-button:hover {
+  background-color: #f1e26f;
+  border: 2px solid #f1e26f;
+  color: black;
 }
