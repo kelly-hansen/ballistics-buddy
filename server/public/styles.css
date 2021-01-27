@@ -27,6 +27,10 @@ header img {
   position: absolute;
 }
 
+.units-btn {
+  width: 5rem;
+}
+
 .safe-shooting {
   color: #f1e26f;
   text-decoration: underline;
