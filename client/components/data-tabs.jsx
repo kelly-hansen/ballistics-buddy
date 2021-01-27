@@ -1,14 +1,23 @@
 import React from 'react';
-import { Tabs } from 'react-bootstrap';
+import { Container, Row, Col, Tabs, Tab } from 'react-bootstrap';
 
 export default class DataTabs extends React.Component {
   render() {
     return (
-      <div className="data-tabs-cont">
-        <Tabs>
+      <Container className="data-tabs-cont pt-5">
+        <Row>
+          <Col>
+            <Tabs defaultActiveKey="calculate">
+              <Tab eventKey="calculate" title="Calculate">
 
-        </Tabs>
-      </div>
+              </Tab>
+              <Tab eventKey="reference-data" title="Reference Data">
+
+              </Tab>
+            </Tabs>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }
