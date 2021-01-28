@@ -16,6 +16,7 @@ export default class Calculate extends React.Component {
     this.handleChangeAdjustment = this.handleChangeAdjustment.bind(this);
     this.handleChangeBulletDrop = this.handleChangeBulletDrop.bind(this);
     this.calculateAdjustment = this.calculateAdjustment.bind(this);
+    this.calculateBulletDrop = this.calculateBulletDrop.bind(this);
   }
 
   handleChangeDistance(e) {
@@ -59,7 +60,31 @@ export default class Calculate extends React.Component {
     this.setState({
       adjustment,
       status: '',
-      calculated: 'adjustment'
+      calculated: 'Adjustment'
+    });
+  }
+
+  calculateBulletDrop() {
+    const distance = parseFloat(this.state.distance, 10);
+    const adjustment = parseFloat(this.state.adjustment, 10);
+    if (isNaN(distance) || isNaN(adjustment)) {
+      this.setState({
+        status: `Please enter a number in the Distance and ${this.context.units} fields.`
+      });
+      return;
+    }
+    let bulletDrop;
+    const distanceMultiplier = distance / 100;
+    if (this.context.units === 'MOA') {
+      bulletDrop = adjustment / distanceMultiplier * 1.047;
+    } else if (this.context.units === 'MRAD') {
+      bulletDrop = adjustment / distanceMultiplier * 3.6;
+    }
+    bulletDrop = bulletDrop.toFixed(2);
+    this.setState({
+      bulletDrop,
+      status: '',
+      calculated: 'Bullet Drop'
     });
   }
 
@@ -86,15 +111,15 @@ export default class Calculate extends React.Component {
               <Form.Group controlId="adjustment">
                 <Form.Label>{this.context.units}</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className={`w-50 mr-2 dark${this.state.calculated === 'adjustment' ? ' calculated' : ''}`} value={this.state.adjustment} onChange={this.handleChangeAdjustment} />
+                  <Form.Control className={`w-50 mr-2 dark${this.state.calculated === 'Adjustment' ? ' calculated' : ''}`} value={this.state.adjustment} onChange={this.handleChangeAdjustment} />
                   <button className="general-button w-50 ml-2" onClick={this.calculateAdjustment}>CALCULATE</button>
                 </div>
               </Form.Group>
               <Form.Group controlId="distance">
                 <Form.Label className="mr-3">Bullet Drop (in)</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" value={this.state.bulletDrop} onChange={this.handleChangeBulletDrop} />
-                  <button className="general-button w-50 ml-2">CALCULATE</button>
+                  <Form.Control className={`w-50 mr-2 dark${this.state.calculated === 'Bullet Drop' ? ' calculated' : ''}`} value={this.state.bulletDrop} onChange={this.handleChangeBulletDrop} />
+                  <button className="general-button w-50 ml-2" onClick={this.calculateBulletDrop}>CALCULATE</button>
                 </div>
               </Form.Group>
             </Form>
