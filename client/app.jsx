@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from './lib/app-context';
 import Home from './pages/home';
 
 export default class App extends React.Component {
@@ -17,6 +18,15 @@ export default class App extends React.Component {
   }
 
   render() {
-    return <Home units={this.state.units} setUnits={this.setUnits} />;
+    const contextValue = {
+      units: this.state.units,
+      setUnits: this.setUnits
+    };
+
+    return (
+      <AppContext.Provider value={contextValue}>
+        <Home />
+      </AppContext.Provider>
+    );
   }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 import UnitsModal from '../components/units-modal';
 import SafetyModal from '../components/safety-modal';
 import DataTabs from '../components/data-tabs';
@@ -16,7 +17,7 @@ export default class Home extends React.Component {
   }
 
   setUnits(e) {
-    this.props.setUnits(e.target.textContent);
+    this.context.setUnits(e.target.textContent);
   }
 
   toggleUnitsModal() {
@@ -40,10 +41,10 @@ export default class Home extends React.Component {
             <div className="text-center">
               <p>Select Units:</p>
               <a href="#calculate-data">
-                <button className={`mr-3 units-button${this.props.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
+                <button className={`mr-3 units-button${this.context.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
               </a>
               <a href="#calculate-data">
-                <button className={`units-button${this.props.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
+                <button className={`units-button${this.context.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
               </a>
               <div className="d-flex justify-content-center">
                 <div className="units-question mt-3" onClick={this.toggleUnitsModal}>?</div>
@@ -57,8 +58,9 @@ export default class Home extends React.Component {
         </header>
         <UnitsModal show={this.state.showUnitsModal} toggle={this.toggleUnitsModal} />
         <SafetyModal show={this.state.showSafetyModal} toggle={this.toggleSafetyModal} />
-        {this.props.units && <DataTabs />}
+        {this.context.units && <DataTabs />}
       </>
     );
   }
 }
+Home.contextType = AppContext;
