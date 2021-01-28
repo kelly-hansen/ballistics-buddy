@@ -9,7 +9,7 @@ export default class Calculate extends React.Component {
         <Row className="mt-5 d-flex justify-content-center">
           <Col md={8} lg={6}>
             <p className="text-center">
-              Enter distance and scope adjustment to calculate bullet drop, or enter distance and bullet drop to calculate scope adjustment.
+              {`Enter distance and ${this.context.units} scope adjustment to calculate bullet drop, or enter distance and bullet drop to calculate ${this.context.units} scope adjustment.`}
             </p>
           </Col>
         </Row>
