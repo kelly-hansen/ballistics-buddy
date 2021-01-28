@@ -8,28 +8,58 @@ export default class Calculate extends React.Component {
     this.state = {
       distance: '',
       adjustment: '',
-      bulletDrop: ''
+      bulletDrop: '',
+      status: '',
+      calculated: null
     };
     this.handleChangeDistance = this.handleChangeDistance.bind(this);
     this.handleChangeAdjustment = this.handleChangeAdjustment.bind(this);
     this.handleChangeBulletDrop = this.handleChangeBulletDrop.bind(this);
+    this.calculateAdjustment = this.calculateAdjustment.bind(this);
   }
 
   handleChangeDistance(e) {
     this.setState({
-      distance: e.target.value
+      distance: e.target.value,
+      calculated: null
     });
   }
 
   handleChangeAdjustment(e) {
     this.setState({
-      adjustment: e.target.value
+      adjustment: e.target.value,
+      calculated: null
     });
   }
 
   handleChangeBulletDrop(e) {
     this.setState({
-      bulletDrop: e.target.value
+      bulletDrop: e.target.value,
+      calculated: null
+    });
+  }
+
+  calculateAdjustment() {
+    const distance = parseFloat(this.state.distance, 10);
+    const bulletDrop = parseFloat(this.state.bulletDrop, 10);
+    if (isNaN(distance) || isNaN(bulletDrop)) {
+      this.setState({
+        status: 'Please enter a number in the Distance and Bullet Drop fields.'
+      });
+      return;
+    }
+    let adjustment;
+    const distanceMultiplier = distance / 100;
+    if (this.context.units === 'MOA') {
+      adjustment = bulletDrop / distanceMultiplier / 1.047;
+    } else if (this.context.units === 'MRAD') {
+      adjustment = bulletDrop / distanceMultiplier / 3.6;
+    }
+    adjustment = adjustment.toFixed(2);
+    this.setState({
+      adjustment,
+      status: '',
+      calculated: 'adjustment'
     });
   }
 
@@ -56,8 +86,8 @@ export default class Calculate extends React.Component {
               <Form.Group controlId="adjustment">
                 <Form.Label>{this.context.units}</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" value={this.state.adjustment} onChange={this.handleChangeAdjustment} />
-                  <button className="general-button w-50 ml-2">CALCULATE</button>
+                  <Form.Control className={`w-50 mr-2 dark${this.state.calculated === 'adjustment' ? ' calculated' : ''}`} value={this.state.adjustment} onChange={this.handleChangeAdjustment} />
+                  <button className="general-button w-50 ml-2" onClick={this.calculateAdjustment}>CALCULATE</button>
                 </div>
               </Form.Group>
               <Form.Group controlId="distance">
@@ -68,6 +98,11 @@ export default class Calculate extends React.Component {
                 </div>
               </Form.Group>
             </Form>
+          </Col>
+        </Row>
+        <Row>
+          <Col>
+            <p className="text-center">{this.state.status}</p>
           </Col>
         </Row>
       </>
