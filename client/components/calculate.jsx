@@ -3,6 +3,22 @@ import { Row, Col, Form } from 'react-bootstrap';
 import AppContext from '../lib/app-context';
 
 export default class Calculate extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      distance: '',
+      adjustment: '',
+      bulletDrop: ''
+    };
+    this.handleChangeDistance = this.handleChangeDistance.bind(this);
+  }
+
+  handleChangeDistance(e) {
+    this.setState({
+      distance: e.target.value
+    });
+  }
+
   render() {
     return (
       <>
@@ -19,7 +35,7 @@ export default class Calculate extends React.Component {
               <Form.Group controlId="distance">
                 <Form.Label>Distance (yds)</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" />
+                  <Form.Control className="w-50 mr-2 dark" value={this.state.distance} onChange={this.handleChangeDistance} />
                   <div className="w-50 ml-2"></div>
                 </div>
               </Form.Group>
