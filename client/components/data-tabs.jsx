@@ -23,7 +23,7 @@ export default class DataTabs extends React.Component {
         <Row>
           <Col className="d-flex justify-content-end">
             <button
-              className={`tab-button${this.state.view === 'CALCULATE' ? ' selected' : ''}`}
+              className={`general-button tab-button${this.state.view === 'CALCULATE' ? ' selected' : ''}`}
               onClick={this.changeTabs}
             >
               CALCULATE
@@ -31,7 +31,7 @@ export default class DataTabs extends React.Component {
           </Col>
           <Col className="d-flex justify-content-start">
             <button
-              className={`tab-button${this.state.view === 'REFERENCE DATA' ? ' selected' : ''}`}
+              className={`general-button tab-button${this.state.view === 'REFERENCE DATA' ? ' selected' : ''}`}
               onClick={this.changeTabs}
             >
               REFERENCE DATA

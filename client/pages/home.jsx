@@ -41,10 +41,10 @@ export default class Home extends React.Component {
             <div className="text-center">
               <p>Select Units:</p>
               <a href="#calculate-data">
-                <button className={`mr-3 units-button${this.context.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
+                <button className={`mr-3 general-button units-button${this.context.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
               </a>
               <a href="#calculate-data">
-                <button className={`units-button${this.context.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
+                <button className={`general-button units-button${this.context.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
               </a>
               <div className="d-flex justify-content-center">
                 <div className="units-question mt-3" onClick={this.toggleUnitsModal}>?</div>

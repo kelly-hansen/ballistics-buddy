@@ -24,6 +24,23 @@ header img {
   max-width: 65%;
 }
 
+form {
+  max-width: 350px;
+}
+
+input.dark {
+  background-color: #131313;
+  border: 2px solid #131313;
+  color: white;
+}
+
+input.dark:focus {
+  background-color: #131313;
+  border: 2px solid #131313;
+  color: white;
+  outline: none;
+}
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.8);
   height: 100%;
@@ -31,27 +48,30 @@ header img {
   position: absolute;
 }
 
-.units-button {
-  width: 5rem;
-  height: 2.5rem;
+.general-button {
   background-color: rgba(0, 0, 0, 0);
   border: 2px solid #f1e26f;
   color: #f1e26f;
   border-radius: 1.25rem;
 }
 
-.units-button.selected {
+.general-button.selected {
   background-color: #f1e26f;
   border: 2px solid #f1e26f;
   color: black;
 }
 
-.units-button:hover,
-.units-button:focus {
+.general-button:hover,
+.general-button:focus {
   background-color: #d8c641;
   border: 2px solid #d8c641;
   color: black;
   outline: none;
+}
+
+.units-button {
+  width: 5rem;
+  height: 2.5rem;
 }
 
 .units-question {
@@ -92,22 +112,4 @@ header img {
 .tab-button {
   width: 15rem;
   height: 2.5rem;
-  background-color: #2e2e2e;
-  border: 2px solid #f1e26f;
-  color: #f1e26f;
-  border-radius: 1.25rem;
-}
-
-.tab-button.selected {
-  background-color: #f1e26f;
-  border: 2px solid #f1e26f;
-  color: black;
-}
-
-.tab-button:hover,
-.tab-button:focus {
-  background-color: #d8c641;
-  border: 2px solid #d8c641;
-  color: #2e2e2e;
-  outline: none;
 }
