@@ -76,9 +76,9 @@ export default class Calculate extends React.Component {
     let bulletDrop;
     const distanceMultiplier = distance / 100;
     if (this.context.units === 'MOA') {
-      bulletDrop = adjustment / distanceMultiplier * 1.047;
+      bulletDrop = adjustment * distanceMultiplier * 1.047;
     } else if (this.context.units === 'MRAD') {
-      bulletDrop = adjustment / distanceMultiplier * 3.6;
+      bulletDrop = adjustment * distanceMultiplier * 3.6;
     }
     bulletDrop = bulletDrop.toFixed(2);
     this.setState({
