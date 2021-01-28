@@ -12,6 +12,7 @@ export default class Calculate extends React.Component {
     };
     this.handleChangeDistance = this.handleChangeDistance.bind(this);
     this.handleChangeAdjustment = this.handleChangeAdjustment.bind(this);
+    this.handleChangeBulletDrop = this.handleChangeBulletDrop.bind(this);
   }
 
   handleChangeDistance(e) {
@@ -23,6 +24,12 @@ export default class Calculate extends React.Component {
   handleChangeAdjustment(e) {
     this.setState({
       adjustment: e.target.value
+    });
+  }
+
+  handleChangeBulletDrop(e) {
+    this.setState({
+      bulletDrop: e.target.value
     });
   }
 
@@ -56,7 +63,7 @@ export default class Calculate extends React.Component {
               <Form.Group controlId="distance">
                 <Form.Label className="mr-3">Bullet Drop (in)</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" />
+                  <Form.Control className="w-50 mr-2 dark" value={this.state.bulletDrop} onChange={this.handleChangeBulletDrop} />
                   <button className="general-button w-50 ml-2">CALCULATE</button>
                 </div>
               </Form.Group>
