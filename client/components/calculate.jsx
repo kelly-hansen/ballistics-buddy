@@ -11,11 +11,18 @@ export default class Calculate extends React.Component {
       bulletDrop: ''
     };
     this.handleChangeDistance = this.handleChangeDistance.bind(this);
+    this.handleChangeAdjustment = this.handleChangeAdjustment.bind(this);
   }
 
   handleChangeDistance(e) {
     this.setState({
       distance: e.target.value
+    });
+  }
+
+  handleChangeAdjustment(e) {
+    this.setState({
+      adjustment: e.target.value
     });
   }
 
@@ -42,7 +49,7 @@ export default class Calculate extends React.Component {
               <Form.Group controlId="adjustment">
                 <Form.Label>{this.context.units}</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" />
+                  <Form.Control className="w-50 mr-2 dark" value={this.state.adjustment} onChange={this.handleChangeAdjustment} />
                   <button className="general-button w-50 ml-2">CALCULATE</button>
                 </div>
               </Form.Group>
