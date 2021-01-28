@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Calculate from './calculate';
 
 export default class DataTabs extends React.Component {
   constructor(props) {
@@ -37,6 +38,7 @@ export default class DataTabs extends React.Component {
             </button>
           </Col>
         </Row>
+        {this.state.view === 'CALCULATE' ? <Calculate /> : false}
       </Container>
     );
   }
