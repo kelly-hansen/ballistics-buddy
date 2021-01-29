@@ -6,7 +6,7 @@ export default class DataTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'CALCULATE'
+      view: 'CHARTS'
     };
     this.changeTabs = this.changeTabs.bind(this);
   }
@@ -23,18 +23,18 @@ export default class DataTabs extends React.Component {
         <Row>
           <Col className="d-flex justify-content-end">
             <button
-              className={`general-button tab-button${this.state.view === 'CALCULATE' ? ' selected' : ''}`}
+              className={`general-button tab-button${this.state.view === 'CHARTS' ? ' selected' : ''}`}
               onClick={this.changeTabs}
             >
-              CALCULATE
+              CHARTS
             </button>
           </Col>
           <Col className="d-flex justify-content-start">
             <button
-              className={`general-button tab-button${this.state.view === 'REFERENCE DATA' ? ' selected' : ''}`}
+              className={`general-button tab-button${this.state.view === 'CALCULATE' ? ' selected' : ''}`}
               onClick={this.changeTabs}
             >
-              REFERENCE DATA
+              CALCULATE
             </button>
           </Col>
         </Row>
