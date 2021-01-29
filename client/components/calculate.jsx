@@ -17,6 +17,7 @@ export default class Calculate extends React.Component {
     this.handleChangeBulletDrop = this.handleChangeBulletDrop.bind(this);
     this.calculateAdjustment = this.calculateAdjustment.bind(this);
     this.calculateBulletDrop = this.calculateBulletDrop.bind(this);
+    this.inputRef = React.createRef();
   }
 
   handleChangeDistance(e) {
@@ -88,6 +89,10 @@ export default class Calculate extends React.Component {
     });
   }
 
+  componentDidMount() {
+    this.inputRef.current.focus();
+  }
+
   render() {
     return (
       <>
@@ -104,7 +109,7 @@ export default class Calculate extends React.Component {
               <Form.Group controlId="distance">
                 <Form.Label>Distance (yds)</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" value={this.state.distance} onChange={this.handleChangeDistance} />
+                  <Form.Control className="w-50 mr-2 dark" ref={this.inputRef} value={this.state.distance} onChange={this.handleChangeDistance} />
                   <div className="w-50 ml-2"></div>
                 </div>
               </Form.Group>
