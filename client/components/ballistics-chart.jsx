@@ -11,17 +11,14 @@ export default class BallisticsChart extends React.Component {
         {
           label: '.308',
           fill: false,
+          borderColor: 'rgba(241, 226, 111, 1)',
           backgroundColor: 'rgba(241, 226, 111, 1)',
-          borderColor: 'rgba(241, 226, 111, 0.5)',
           data: [1.5, 0, 4, 14, 32, 59, 96, 145, 208, 289, 390]
         }
       ]
     };
 
     const options = {
-      legend: {
-        display: false
-      },
       scales: {
         xAxes: [{
           scaleLabel: {
@@ -31,9 +28,6 @@ export default class BallisticsChart extends React.Component {
           },
           ticks: {
             fontColor: 'gray'
-          },
-          gridLines: {
-
           }
         }],
         yAxes: [{
@@ -45,11 +39,18 @@ export default class BallisticsChart extends React.Component {
           ticks: {
             reverse: true,
             fontColor: 'gray'
-          },
-          gridLines: {
-
           }
         }]
+      },
+      tooltips: {
+        callbacks: {
+          title: function (tooltipItem, data) {
+            return tooltipItem[0].label + ' yds';
+          },
+          label: function (tooltipItem) {
+            return `${data.datasets[0].label}: ${tooltipItem.yLabel} in`;
+          }
+        }
       }
     };
 
