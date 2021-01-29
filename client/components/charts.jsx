@@ -6,9 +6,11 @@ export default class Charts extends React.Component {
   render() {
     return (
       <>
-        <Row>
-          <Col>
-            <p>Charts</p>
+        <Row className="mt-5 d-flex justify-content-center">
+          <Col md={8} lg={6}>
+            <p className="text-center">
+              Charts
+            </p>
             <BallisticsChart />
           </Col>
         </Row>
