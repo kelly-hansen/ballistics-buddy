@@ -1,5 +1,6 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Charts from './charts';
 import Calculate from './calculate';
 
 export default class DataTabs extends React.Component {
@@ -38,7 +39,8 @@ export default class DataTabs extends React.Component {
             </button>
           </Col>
         </Row>
-        {this.state.view === 'CALCULATE' ? <Calculate /> : false}
+        {this.state.view === 'CHARTS' && <Charts />}
+        {this.state.view === 'CALCULATE' && <Calculate />}
       </Container>
     );
   }
