@@ -7,7 +7,7 @@ export default class Charts extends React.Component {
     return (
       <>
         <Row className="mt-5 d-flex justify-content-center">
-          <Col md={8} lg={6}>
+          <Col md={9} lg={7} xl={6}>
             <p className="text-center">
               Charts
             </p>
