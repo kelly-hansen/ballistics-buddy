@@ -8,10 +8,14 @@ export default class Charts extends React.Component {
       <>
         <Row className="mt-5 d-flex justify-content-center">
           <Col md={9} lg={7} xl={6}>
-            <p className="text-center">
-              Charts
-            </p>
             <BallisticsChart />
+          </Col>
+        </Row>
+        <Row className="mt-5 d-flex justify-content-center">
+          <Col md={8} lg={6}>
+            <p className="text-center">
+              Note: These are baseline figures for reference using a 100-yard zero. Actual performance will vary based on type of ammunition, rifle, and weather conditions.
+            </p>
           </Col>
         </Row>
       </>
