@@ -14,8 +14,8 @@ export default class BallisticsTable extends React.Component {
         <tbody>
           <tr>
             <td>0</td>
-            <td></td>
-            <td></td>
+            <td>-</td>
+            <td>-</td>
           </tr>
           <tr>
             <td>100</td>
