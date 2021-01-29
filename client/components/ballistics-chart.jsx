@@ -19,6 +19,11 @@ export default class BallisticsChart extends React.Component {
     };
 
     const options = {
+      legend: {
+        labels: {
+          fontColor: 'gray'
+        }
+      },
       scales: {
         xAxes: [{
           scaleLabel: {
