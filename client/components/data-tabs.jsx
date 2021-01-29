@@ -10,6 +10,7 @@ export default class DataTabs extends React.Component {
       view: 'CHARTS'
     };
     this.changeTabs = this.changeTabs.bind(this);
+    this.tabsRef = React.createRef();
   }
 
   changeTabs(e) {
@@ -18,9 +19,13 @@ export default class DataTabs extends React.Component {
     });
   }
 
+  componentDidMount() {
+    window.scrollTo(0, this.tabsRef.current.getBoundingClientRect().y);
+  }
+
   render() {
     return (
-      <Container className="data-tabs-cont pt-5" id="calculate-data">
+      <Container className="data-tabs-cont pt-5" ref={this.tabsRef}>
         <Row>
           <Col className="d-flex justify-content-end">
             <button
