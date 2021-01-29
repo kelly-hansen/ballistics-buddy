@@ -21,7 +21,7 @@ export default class BallisticsChart extends React.Component {
     const options = {
       legend: {
         labels: {
-          fontColor: 'gray'
+          fontColor: 'white'
         }
       },
       scales: {
@@ -29,21 +29,27 @@ export default class BallisticsChart extends React.Component {
           scaleLabel: {
             display: true,
             labelString: 'Distance (yds)',
-            fontColor: 'gray'
+            fontColor: 'white'
           },
           ticks: {
-            fontColor: 'gray'
+            fontColor: 'white'
+          },
+          gridLines: {
+            color: '#515151'
           }
         }],
         yAxes: [{
           scaleLabel: {
             display: true,
             labelString: 'Bullet Drop (in)',
-            fontColor: 'gray'
+            fontColor: 'white'
           },
           ticks: {
             reverse: true,
-            fontColor: 'gray'
+            fontColor: 'white'
+          },
+          gridLines: {
+            color: '#515151'
           }
         }]
       },

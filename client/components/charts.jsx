@@ -1,6 +1,7 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
 import BallisticsChart from './ballistics-chart';
+import BallisticsTable from './ballistics-table';
 
 export default class Charts extends React.Component {
   render() {
@@ -9,6 +10,9 @@ export default class Charts extends React.Component {
         <Row className="mt-5 d-flex justify-content-center">
           <Col md={9} lg={7} xl={6}>
             <BallisticsChart />
+            <div className="mt-5">
+              <BallisticsTable />
+            </div>
           </Col>
         </Row>
         <Row className="mt-5 d-flex justify-content-center">
