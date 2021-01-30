@@ -4,6 +4,20 @@ import BallisticsChart from './ballistics-chart';
 import BallisticsTable from './ballistics-table';
 
 export default class Charts extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      caliber: '.223 Remington'
+    };
+    this.handleChangeCaliber = this.handleChangeCaliber.bind(this);
+  }
+
+  handleChangeCaliber(e) {
+    this.setState({
+      caliber: e.target.value
+    });
+  }
+
   render() {
     return (
       <>
@@ -12,7 +26,7 @@ export default class Charts extends React.Component {
             <Form>
               <Form.Group>
                 <Form.Label>Caliber</Form.Label>
-                <Form.Control as="select" className="dark">
+                <Form.Control as="select" className="dark" value={this.state.caliber} onChange={this.handleChangeCaliber}>
                   <option value=".223 Remington">.223 Remington</option>
                   <option value=".300 Win Mag">.300 Win Mag</option>
                   <option value=".308 Winchester">.308 Winchester</option>
