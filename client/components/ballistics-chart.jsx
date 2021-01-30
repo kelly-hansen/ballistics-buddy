@@ -9,11 +9,18 @@ export default class BallisticsChart extends React.Component {
       xAxisID: 'Distance (yds)',
       datasets: [
         {
-          label: '.308',
+          label: '.308 Winchester',
           fill: false,
           borderColor: 'rgba(241, 226, 111, 1)',
           backgroundColor: 'rgba(241, 226, 111, 1)',
           data: [1.5, 0, 4, 14, 32, 59, 96, 145, 208, 289, 390]
+        },
+        {
+          label: '6.5mm Creedmoor',
+          fill: false,
+          borderColor: 'deepskyblue',
+          backgroundColor: 'deepskyblue',
+          data: [1.5, 0, 3, 12, 29, 52, 89, 129, 179, 248, 331]
         }
       ]
     };
