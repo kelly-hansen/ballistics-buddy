@@ -1,7 +1,20 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 
 export default class BallisticsTable extends React.Component {
   render() {
+    const tableData = this.props.caliber1Data.ballisticsData.map((dataItem, i) => {
+      const bulletDrop = dataItem.distance === 0 ? '-' : dataItem.bulletDrop;
+
+      return (
+        <tr key={`dataItem${i}`}>
+          <td>{dataItem.distance}</td>
+          <td>{bulletDrop}</td>
+          <td></td>
+        </tr>
+      );
+    });
+
     return (
       <table className="ballistics-table text-center">
         <thead>
@@ -12,63 +25,11 @@ export default class BallisticsTable extends React.Component {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>200</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>300</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>400</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>500</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>600</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>700</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>800</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>900</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>1000</td>
-            <td></td>
-            <td></td>
-          </tr>
+          {tableData}
         </tbody>
       </table>
     );
   }
 }
+
+BallisticsTable.contextType = AppContext;

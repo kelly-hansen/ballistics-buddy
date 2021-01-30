@@ -142,7 +142,7 @@ export default class Charts extends React.Component {
             <BallisticsChart caliber1Data={dummyData} caliber2Data={dummyData2} />
           </Col>
           <Col md={9} lg={6}>
-            <BallisticsTable />
+            <BallisticsTable caliber1Data={dummyData} />
           </Col>
         </Row>
         <Row className="mt-5 d-flex justify-content-center">
