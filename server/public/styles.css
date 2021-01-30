@@ -118,6 +118,10 @@ input.calculated {
   height: 2.5rem;
 }
 
+.ballistics-chart {
+  height: 13rem;
+}
+
 .ballistics-table {
   font-size: 0.8rem;
   width: 100%;
@@ -135,5 +139,9 @@ input.calculated {
 @media (min-width: 576px) {
   .ballistics-table {
     font-size: 1rem;
+  }
+
+  .ballistics-chart {
+    height: 15rem;
   }
 }

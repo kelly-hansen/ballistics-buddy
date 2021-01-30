@@ -19,6 +19,7 @@ export default class BallisticsChart extends React.Component {
     };
 
     const options = {
+      maintainAspectRatio: false,
       legend: {
         labels: {
           fontColor: 'white'
@@ -66,7 +67,9 @@ export default class BallisticsChart extends React.Component {
     };
 
     return (
-      <Line data={data} options={options} />
+      <div className="ballistics-chart">
+        <Line data={data} options={options} />
+      </div>
     );
   }
 }
