@@ -7,23 +7,36 @@ export default class BallisticsChart extends React.Component {
     const data = {
       labels: ['0', '100', '200', '300', '400', '500', '600', '700', '800', '900', '1000'],
       xAxisID: 'Distance (yds)',
-      datasets: [
-        {
-          label: '.308 Winchester',
-          fill: false,
-          borderColor: 'rgba(241, 226, 111, 1)',
-          backgroundColor: 'rgba(241, 226, 111, 1)',
-          data: [1.5, 0, 4, 14, 32, 59, 96, 145, 208, 289, 390]
-        },
-        {
-          label: '6.5mm Creedmoor',
-          fill: false,
-          borderColor: 'deepskyblue',
-          backgroundColor: 'deepskyblue',
-          data: [1.5, 0, 3, 12, 29, 52, 89, 129, 179, 248, 331]
-        }
-      ]
+      datasets: []
     };
+
+    const caliber1Data = [];
+    for (let i = 0; i < this.props.caliber1Data.ballisticsData.length; i++) {
+      caliber1Data.push(this.props.caliber1Data.ballisticsData[i].bulletDrop);
+    }
+    const caliber1Dataset = {
+      label: this.props.caliber1Data.caliber,
+      fill: false,
+      borderColor: 'rgba(241, 226, 111, 1)',
+      backgroundColor: 'rgba(241, 226, 111, 1)',
+      data: caliber1Data
+    };
+    data.datasets.push(caliber1Dataset);
+
+    if (this.props.caliber2Data) {
+      const caliber2Data = [];
+      for (let i = 0; i < this.props.caliber2Data.ballisticsData.length; i++) {
+        caliber2Data.push(this.props.caliber2Data.ballisticsData[i].bulletDrop);
+      }
+      const caliber2Dataset = {
+        label: this.props.caliber2Data.caliber,
+        fill: false,
+        borderColor: 'deepskyblue',
+        backgroundColor: 'deepskyblue',
+        data: caliber2Data
+      };
+      data.datasets.push(caliber2Dataset);
+    }
 
     const options = {
       maintainAspectRatio: false,
