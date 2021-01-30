@@ -1,14 +1,16 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
+import Charts from './charts';
 import Calculate from './calculate';
 
 export default class DataTabs extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      view: 'CALCULATE'
+      view: 'CHARTS'
     };
     this.changeTabs = this.changeTabs.bind(this);
+    this.tabsRef = React.createRef();
   }
 
   changeTabs(e) {
@@ -17,11 +19,23 @@ export default class DataTabs extends React.Component {
     });
   }
 
+  componentDidMount() {
+    window.scrollTo(0, this.tabsRef.current.getBoundingClientRect().y);
+  }
+
   render() {
     return (
-      <Container className="data-tabs-cont pt-5" id="calculate-data">
+      <Container className="data-tabs-cont pt-5" ref={this.tabsRef}>
         <Row>
           <Col className="d-flex justify-content-end">
+            <button
+              className={`general-button tab-button${this.state.view === 'CHARTS' ? ' selected' : ''}`}
+              onClick={this.changeTabs}
+            >
+              CHARTS
+            </button>
+          </Col>
+          <Col className="d-flex justify-content-start">
             <button
               className={`general-button tab-button${this.state.view === 'CALCULATE' ? ' selected' : ''}`}
               onClick={this.changeTabs}
@@ -29,16 +43,9 @@ export default class DataTabs extends React.Component {
               CALCULATE
             </button>
           </Col>
-          <Col className="d-flex justify-content-start">
-            <button
-              className={`general-button tab-button${this.state.view === 'REFERENCE DATA' ? ' selected' : ''}`}
-              onClick={this.changeTabs}
-            >
-              REFERENCE DATA
-            </button>
-          </Col>
         </Row>
-        {this.state.view === 'CALCULATE' ? <Calculate /> : false}
+        {this.state.view === 'CHARTS' && <Charts />}
+        {this.state.view === 'CALCULATE' && <Calculate />}
       </Container>
     );
   }

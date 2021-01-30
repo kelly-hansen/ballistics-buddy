@@ -17,6 +17,8 @@ export default class Calculate extends React.Component {
     this.handleChangeBulletDrop = this.handleChangeBulletDrop.bind(this);
     this.calculateAdjustment = this.calculateAdjustment.bind(this);
     this.calculateBulletDrop = this.calculateBulletDrop.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
+    this.inputRef = React.createRef();
   }
 
   handleChangeDistance(e) {
@@ -88,23 +90,31 @@ export default class Calculate extends React.Component {
     });
   }
 
+  formSubmit(e) {
+    e.preventDefault();
+  }
+
+  componentDidMount() {
+    this.inputRef.current.focus();
+  }
+
   render() {
     return (
       <>
         <Row className="mt-5 d-flex justify-content-center">
           <Col md={8} lg={6}>
             <p className="text-center">
-              {`Enter distance and ${this.context.units} scope adjustment to calculate bullet drop, or enter distance and bullet drop to calculate ${this.context.units} scope adjustment.`}
+              {`Enter Distance and ${this.context.units} scope adjustment to calculate Bullet Drop, or enter Distance and Bullet Drop to calculate ${this.context.units} scope adjustment.`}
             </p>
           </Col>
         </Row>
         <Row className="d-flex justify-content-center my-5">
           <Col md={6} className="d-flex justify-content-center">
-            <Form>
+            <Form onSubmit={this.formSubmit}>
               <Form.Group controlId="distance">
                 <Form.Label>Distance (yds)</Form.Label>
                 <div className="d-flex">
-                  <Form.Control className="w-50 mr-2 dark" value={this.state.distance} onChange={this.handleChangeDistance} />
+                  <Form.Control className="w-50 mr-2 dark" ref={this.inputRef} value={this.state.distance} onChange={this.handleChangeDistance} />
                   <div className="w-50 ml-2"></div>
                 </div>
               </Form.Group>

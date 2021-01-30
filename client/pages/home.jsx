@@ -40,12 +40,8 @@ export default class Home extends React.Component {
             <img src="./bblogo.png" alt="Ballistics Buddy logo" />
             <div className="text-center">
               <p>Select Units:</p>
-              <a href="#calculate-data">
-                <button className={`mr-3 general-button units-button${this.context.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
-              </a>
-              <a href="#calculate-data">
-                <button className={`general-button units-button${this.context.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
-              </a>
+              <button className={`mr-3 general-button units-button${this.context.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
+              <button className={`general-button units-button${this.context.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
               <div className="d-flex justify-content-center">
                 <div className="units-question mt-3" onClick={this.toggleUnitsModal}>?</div>
               </div>

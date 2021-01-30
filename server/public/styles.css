@@ -28,6 +28,18 @@ form {
   max-width: 350px;
 }
 
+select.dark {
+  background-color: #131313;
+  border: none;
+  color: white;
+}
+
+select.dark:focus {
+  background-color: #131313;
+  border: none;
+  color: white;
+}
+
 input.dark {
   background-color: #131313;
   border: 2px solid #131313;
@@ -116,4 +128,32 @@ input.calculated {
 .tab-button {
   width: 15rem;
   height: 2.5rem;
+}
+
+.ballistics-chart {
+  height: 13rem;
+}
+
+.ballistics-table {
+  font-size: 0.8rem;
+  width: 100%;
+  color: white;
+}
+
+.ballistics-table th {
+  width: calc(100% / 3);
+}
+
+.ballistics-table tbody > tr:nth-child(odd) {
+  background-color: #515151;
+}
+
+@media (min-width: 576px) {
+  .ballistics-table {
+    font-size: 1rem;
+  }
+
+  .ballistics-chart {
+    height: 15rem;
+  }
 }
