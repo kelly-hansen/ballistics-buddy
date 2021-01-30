@@ -24,11 +24,11 @@ export default class Charts extends React.Component {
           </Col>
         </Row>
         <Row className="mt-5 d-flex justify-content-center">
-          <Col md={9} lg={7} xl={6}>
+          <Col md={9} lg={6} className="mb-5">
             <BallisticsChart />
-            <div className="mt-5">
-              <BallisticsTable />
-            </div>
+          </Col>
+          <Col md={9} lg={6}>
+            <BallisticsTable />
           </Col>
         </Row>
         <Row className="mt-5 d-flex justify-content-center">
