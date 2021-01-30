@@ -62,6 +62,7 @@ export default class BallisticsChart extends React.Component {
         }]
       },
       tooltips: {
+        mode: 'index',
         callbacks: {
           title: function (tooltipItem, data) {
             return tooltipItem[0].label + ' yds';
