@@ -28,6 +28,18 @@ form {
   max-width: 350px;
 }
 
+select.dark {
+  background-color: #131313;
+  border: none;
+  color: white;
+}
+
+select.dark:focus {
+  background-color: #131313;
+  border: none;
+  color: white;
+}
+
 input.dark {
   background-color: #131313;
   border: 2px solid #131313;

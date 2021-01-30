@@ -17,6 +17,7 @@ export default class Calculate extends React.Component {
     this.handleChangeBulletDrop = this.handleChangeBulletDrop.bind(this);
     this.calculateAdjustment = this.calculateAdjustment.bind(this);
     this.calculateBulletDrop = this.calculateBulletDrop.bind(this);
+    this.formSubmit = this.formSubmit.bind(this);
     this.inputRef = React.createRef();
   }
 
@@ -89,6 +90,10 @@ export default class Calculate extends React.Component {
     });
   }
 
+  formSubmit(e) {
+    e.preventDefault();
+  }
+
   componentDidMount() {
     this.inputRef.current.focus();
   }
@@ -105,7 +110,7 @@ export default class Calculate extends React.Component {
         </Row>
         <Row className="d-flex justify-content-center my-5">
           <Col md={6} className="d-flex justify-content-center">
-            <Form>
+            <Form onSubmit={this.formSubmit}>
               <Form.Group controlId="distance">
                 <Form.Label>Distance (yds)</Form.Label>
                 <div className="d-flex">
