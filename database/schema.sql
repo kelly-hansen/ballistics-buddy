@@ -2,7 +2,7 @@ CREATE SCHEMA IF NOT EXISTS "public";
 
 CREATE TABLE "calibers" (
         "caliberId" serial NOT NULL,
-        "calibers" TEXT NOT NULL,
+        "caliber" TEXT NOT NULL,
         CONSTRAINT "calibers_pk" PRIMARY KEY ("caliberId")
 ) WITH (
   OIDS=FALSE
