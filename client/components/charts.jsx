@@ -82,56 +82,6 @@ export default class Charts extends React.Component {
   }
 
   render() {
-    const dummyData2 = {
-      caliber: '.338 Lapua Magnum',
-      ballisticsData: [
-        {
-          distance: 0,
-          bulletDrop: -1.5
-        },
-        {
-          distance: 100,
-          bulletDrop: 0
-        },
-        {
-          distance: 200,
-          bulletDrop: -2
-        },
-        {
-          distance: 300,
-          bulletDrop: -8
-        },
-        {
-          distance: 400,
-          bulletDrop: -24
-        },
-        {
-          distance: 500,
-          bulletDrop: -47
-        },
-        {
-          distance: 600,
-          bulletDrop: -79
-        },
-        {
-          distance: 700,
-          bulletDrop: -110
-        },
-        {
-          distance: 800,
-          bulletDrop: -150
-        },
-        {
-          distance: 900,
-          bulletDrop: -195
-        },
-        {
-          distance: 1000,
-          bulletDrop: -250
-        }
-      ]
-    };
-
     let content;
     if (!this.state.status) {
       content = (
@@ -191,11 +141,13 @@ export default class Charts extends React.Component {
           </Row>
           <Row className="mt-5 d-flex justify-content-center">
             <Col md={9} lg={6} className="mb-5">
-              <BallisticsChart caliber1Data={this.state.caliber1Data} caliber2Data={this.state.caliber2Data} />
+              <BallisticsChart caliber1Data={this.state.caliber1Data} caliber2Data={this.state.compare ? this.state.caliber2Data : null} />
             </Col>
-            <Col md={9} lg={6}>
+            {!this.state.compare && (
+              <Col md={9} lg={6}>
               <BallisticsTable caliber1Data={this.state.caliber1Data} />
             </Col>
+            )}
           </Row>
           <Row className="mt-5 d-flex justify-content-center">
             <Col md={8} lg={6}>
