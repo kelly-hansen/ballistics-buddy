@@ -31,8 +31,8 @@ export default class BallisticsChart extends React.Component {
       const caliber2Dataset = {
         label: this.props.caliber2Data.caliber,
         fill: false,
-        borderColor: 'deepskyblue',
-        backgroundColor: 'deepskyblue',
+        borderColor: '#007BFF',
+        backgroundColor: '#007BFF',
         data: caliber2Data
       };
       data.datasets.push(caliber2Dataset);
