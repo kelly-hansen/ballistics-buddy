@@ -128,6 +128,7 @@ export default class Charts extends React.Component {
                 {this.state.compare && (
                   <Form.Group>
                     <Form.Control as="select" className="dark" value={this.state.caliber2} onChange={this.handleChangeCaliber2}>
+                      <option value="" disabled selected>Select to compare</option>
                       <option value=".223 Remington">.223 Remington</option>
                       <option value=".300 Win Mag">.300 Win Mag</option>
                       <option value=".308 Winchester">.308 Winchester</option>
