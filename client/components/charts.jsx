@@ -24,7 +24,7 @@ export default class Charts extends React.Component {
       ballisticsData: [
         {
           distance: 0,
-          bulletDrop: 1.5
+          bulletDrop: -1.5
         },
         {
           distance: 100,
@@ -32,39 +32,39 @@ export default class Charts extends React.Component {
         },
         {
           distance: 200,
-          bulletDrop: 4
+          bulletDrop: -4
         },
         {
           distance: 300,
-          bulletDrop: 14
+          bulletDrop: -14
         },
         {
           distance: 400,
-          bulletDrop: 32
+          bulletDrop: -32
         },
         {
           distance: 500,
-          bulletDrop: 59
+          bulletDrop: -59
         },
         {
           distance: 600,
-          bulletDrop: 96
+          bulletDrop: -96
         },
         {
           distance: 700,
-          bulletDrop: 145
+          bulletDrop: -145
         },
         {
           distance: 800,
-          bulletDrop: 208
+          bulletDrop: -208
         },
         {
           distance: 900,
-          bulletDrop: 289
+          bulletDrop: -289
         },
         {
           distance: 1000,
-          bulletDrop: 390
+          bulletDrop: -390
         }
       ]
     };
@@ -74,7 +74,7 @@ export default class Charts extends React.Component {
       ballisticsData: [
         {
           distance: 0,
-          bulletDrop: 1.5
+          bulletDrop: -1.5
         },
         {
           distance: 100,
@@ -82,39 +82,39 @@ export default class Charts extends React.Component {
         },
         {
           distance: 200,
-          bulletDrop: 2
+          bulletDrop: -2
         },
         {
           distance: 300,
-          bulletDrop: 8
+          bulletDrop: -8
         },
         {
           distance: 400,
-          bulletDrop: 24
+          bulletDrop: -24
         },
         {
           distance: 500,
-          bulletDrop: 47
+          bulletDrop: -47
         },
         {
           distance: 600,
-          bulletDrop: 79
+          bulletDrop: -79
         },
         {
           distance: 700,
-          bulletDrop: 110
+          bulletDrop: -110
         },
         {
           distance: 800,
-          bulletDrop: 150
+          bulletDrop: -150
         },
         {
           distance: 900,
-          bulletDrop: 195
+          bulletDrop: -195
         },
         {
           distance: 1000,
-          bulletDrop: 250
+          bulletDrop: -250
         }
       ]
     };

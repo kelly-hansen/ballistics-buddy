@@ -66,7 +66,6 @@ export default class BallisticsChart extends React.Component {
             fontColor: 'white'
           },
           ticks: {
-            reverse: true,
             fontColor: 'white'
           },
           gridLines: {

@@ -4,7 +4,6 @@ import AppContext from '../lib/app-context';
 export default class BallisticsTable extends React.Component {
   render() {
     const tableData = this.props.caliber1Data.ballisticsData.map((dataItem, i) => {
-      const bulletDrop = dataItem.distance === 0 ? '-' : dataItem.bulletDrop;
       let adjustment;
       if (dataItem.distance === 0) {
         adjustment = '-';
@@ -21,7 +20,7 @@ export default class BallisticsTable extends React.Component {
       return (
         <tr key={`dataItem${i}`}>
           <td>{dataItem.distance}</td>
-          <td>{bulletDrop}</td>
+          <td>{dataItem.bulletDrop}</td>
           <td>{adjustment}</td>
         </tr>
       );
