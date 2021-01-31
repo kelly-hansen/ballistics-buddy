@@ -10,16 +10,26 @@ export default class Charts extends React.Component {
       status: null,
       caliber1: '.223 Remington',
       caliber1Data: null,
-      compare: false
+      compare: false,
+      caliber2: null,
+      caliber2Data: null
     };
-    this.handleChangeCaliber = this.handleChangeCaliber.bind(this);
+    this.handleChangeCaliber1 = this.handleChangeCaliber1.bind(this);
+    this.handleChangeCaliber2 = this.handleChangeCaliber2.bind(this);
     this.handleChangeCompareSwitch = this.handleChangeCompareSwitch.bind(this);
   }
 
-  handleChangeCaliber(e) {
+  handleChangeCaliber1(e) {
     this.getBallisticsData(e.target.value, 'caliber1');
     this.setState({
       caliber1: e.target.value
+    });
+  }
+
+  handleChangeCaliber2(e) {
+    this.getBallisticsData(e.target.value, 'caliber2');
+    this.setState({
+      caliber2: e.target.value
     });
   }
 
@@ -149,7 +159,7 @@ export default class Charts extends React.Component {
               <Form>
                 <Form.Group>
                   <Form.Label>Caliber</Form.Label>
-                  <Form.Control as="select" className="dark" value={this.state.caliber1} onChange={this.handleChangeCaliber}>
+                  <Form.Control as="select" className="dark" value={this.state.caliber1} onChange={this.handleChangeCaliber1}>
                     <option value=".223 Remington">.223 Remington</option>
                     <option value=".300 Win Mag">.300 Win Mag</option>
                     <option value=".308 Winchester">.308 Winchester</option>
@@ -165,12 +175,23 @@ export default class Charts extends React.Component {
                     onChange={this.handleChangeCompareSwitch}
                   />
                 </Form.Group>
+                {this.state.compare && (
+                  <Form.Group>
+                    <Form.Control as="select" className="dark" value={this.state.caliber2} onChange={this.handleChangeCaliber2}>
+                      <option value=".223 Remington">.223 Remington</option>
+                      <option value=".300 Win Mag">.300 Win Mag</option>
+                      <option value=".308 Winchester">.308 Winchester</option>
+                      <option value="6.5mm Creedmoor">6.5mm Creedmoor</option>
+                      <option value=".50 BMG">.50 BMG</option>
+                    </Form.Control>
+                  </Form.Group>
+                )}
               </Form>
             </Col>
           </Row>
           <Row className="mt-5 d-flex justify-content-center">
             <Col md={9} lg={6} className="mb-5">
-              <BallisticsChart caliber1Data={this.state.caliber1Data} caliber2Data={dummyData2} />
+              <BallisticsChart caliber1Data={this.state.caliber1Data} caliber2Data={this.state.caliber2Data} />
             </Col>
             <Col md={9} lg={6}>
               <BallisticsTable caliber1Data={this.state.caliber1Data} />
