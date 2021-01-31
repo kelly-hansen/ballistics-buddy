@@ -3,7 +3,7 @@ insert into "calibers" ("caliber")
             ('.300 Win Mag'),
             ('.308 Winchester'),
             ('6.5mm Creedmoor'),
-            ('.338 Lapua Magnum');
+            ('.50 BMG');
 
 insert into "ballisticsData" ("caliberId", "distance", "bulletDrop")
      values ((select "caliberId" from "calibers" where "caliber" =  '.223 Remington'), 0, -1.5),
@@ -56,3 +56,16 @@ insert into "ballisticsData" ("caliberId", "distance", "bulletDrop")
             ((select "caliberId" from "calibers" where "caliber" =  '6.5mm Creedmoor'), 800, -185),
             ((select "caliberId" from "calibers" where "caliber" =  '6.5mm Creedmoor'), 900, -252.5),
             ((select "caliberId" from "calibers" where "caliber" =  '6.5mm Creedmoor'), 1000, -335);
+
+insert into "ballisticsData" ("caliberId", "distance", "bulletDrop")
+     values ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 0, -1.5),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 100, 0),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 200, -3.2),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 300, -11.3),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 400, -24.7),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 500, -43.8),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 600, -69),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 700, -100.6),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 800, -139.1),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 900, -185.1),
+            ((select "caliberId" from "calibers" where "caliber" =  '.50 BMG'), 1000, -239.1);

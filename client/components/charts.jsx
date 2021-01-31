@@ -131,7 +131,7 @@ export default class Charts extends React.Component {
                   <option value=".300 Win Mag">.300 Win Mag</option>
                   <option value=".308 Winchester">.308 Winchester</option>
                   <option value="6.5mm Creedmoor">6.5mm Creedmoor</option>
-                  <option value=".338 Lapua Magnum">.338 Lapua Magnum</option>
+                  <option value=".50 BMG">.50 BMG</option>
                 </Form.Control>
               </Form.Group>
             </Form>
