@@ -16,6 +16,23 @@ export default class Charts extends React.Component {
     this.setState({
       caliber: e.target.value
     });
+    this.getBallisticsData(e.target.value);
+  }
+
+  getBallisticsData(caliber) {
+    fetch('/api/ballistics-data', {
+      headers: {
+        'Content-Type': 'application/json',
+        caliber: caliber
+      }
+    })
+      .then(res => res.json())
+      .then(result => {
+        console.log(result);
+      })
+      .catch(err => {
+        console.error(err);
+      });
   }
 
   render() {

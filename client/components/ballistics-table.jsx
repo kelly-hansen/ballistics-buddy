@@ -14,7 +14,7 @@ export default class BallisticsTable extends React.Component {
         } else if (this.context.units === 'MRAD') {
           adjustment = dataItem.bulletDrop / distanceMultiplier / 3.6;
         }
-        adjustment = adjustment.toFixed(2);
+        adjustment = -adjustment.toFixed(2);
       }
 
       return (
