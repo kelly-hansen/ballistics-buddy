@@ -1,74 +1,46 @@
 import React from 'react';
+import AppContext from '../lib/app-context';
 
 export default class BallisticsTable extends React.Component {
   render() {
+    const tableData = this.props.caliber1Data.ballisticsData.map((dataItem, i) => {
+      let adjustment;
+      if (dataItem.distance === 0) {
+        adjustment = '-';
+      } else {
+        const distanceMultiplier = dataItem.distance / 100;
+        if (this.context.units === 'MOA') {
+          adjustment = dataItem.bulletDrop / distanceMultiplier / 1.047;
+        } else if (this.context.units === 'MRAD') {
+          adjustment = dataItem.bulletDrop / distanceMultiplier / 3.6;
+        }
+        adjustment = -adjustment.toFixed(2);
+      }
+
+      return (
+        <tr key={`dataItem${i}`}>
+          <td>{dataItem.distance}</td>
+          <td>{dataItem.bulletDrop}</td>
+          <td>{adjustment}</td>
+        </tr>
+      );
+    });
+
     return (
       <table className="ballistics-table text-center">
         <thead>
           <tr>
             <th>Distance (yds)</th>
             <th>Bullet Drop (in)</th>
-            <th>Adj</th>
+            <th>{this.context.units}</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>0</td>
-            <td>-</td>
-            <td>-</td>
-          </tr>
-          <tr>
-            <td>100</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>200</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>300</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>400</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>500</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>600</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>700</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>800</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>900</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>1000</td>
-            <td></td>
-            <td></td>
-          </tr>
+          {tableData}
         </tbody>
       </table>
     );
   }
 }
+
+BallisticsTable.contextType = AppContext;
