@@ -11,7 +11,7 @@ export default class Charts extends React.Component {
       caliber1: '.223 Remington',
       caliber1Data: null,
       compare: false,
-      caliber2: null,
+      caliber2: 'compare',
       caliber2Data: null
     };
     this.handleChangeCaliber1 = this.handleChangeCaliber1.bind(this);
@@ -127,8 +127,13 @@ export default class Charts extends React.Component {
                 </Form.Group>
                 {this.state.compare && (
                   <Form.Group>
-                    <Form.Control as="select" className="dark" value={this.state.caliber2} onChange={this.handleChangeCaliber2}>
-                      <option value="" disabled selected>Select to compare</option>
+                    <Form.Control
+                      as="select"
+                      className="dark"
+                      value={this.state.caliber2}
+                      onChange={this.handleChangeCaliber2}
+                    >
+                      <option value="compare" disabled>Select to compare</option>
                       <option value=".223 Remington">.223 Remington</option>
                       <option value=".300 Win Mag">.300 Win Mag</option>
                       <option value=".308 Winchester">.308 Winchester</option>
@@ -142,7 +147,7 @@ export default class Charts extends React.Component {
           </Row>
           <Row className="mt-5 d-flex justify-content-center">
             <Col md={9} lg={6} className="mb-5">
-              <BallisticsChart caliber1Data={this.state.caliber1Data} caliber2Data={this.state.compare ? this.state.caliber2Data : null} />
+              <BallisticsChart caliber1Data={this.state.caliber1Data} caliber2Data={this.state.compare ? this.state.caliber2Data : false} />
             </Col>
             {!this.state.compare && (
               <Col md={9} lg={6}>
