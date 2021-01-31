@@ -18,6 +18,7 @@ export default class Home extends React.Component {
 
   setUnits(e) {
     this.context.setUnits(e.target.textContent);
+    e.target.blur();
   }
 
   toggleUnitsModal() {

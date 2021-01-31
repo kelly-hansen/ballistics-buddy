@@ -14,6 +14,7 @@ export default class DataTabs extends React.Component {
   }
 
   changeTabs(e) {
+    e.target.blur();
     this.setState({
       view: e.target.textContent
     });
