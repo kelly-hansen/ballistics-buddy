@@ -9,15 +9,23 @@ export default class Charts extends React.Component {
     this.state = {
       status: null,
       caliber1: '.223 Remington',
-      caliber1Data: null
+      caliber1Data: null,
+      compare: false
     };
     this.handleChangeCaliber = this.handleChangeCaliber.bind(this);
+    this.handleChangeCompareSwitch = this.handleChangeCompareSwitch.bind(this);
   }
 
   handleChangeCaliber(e) {
     this.getBallisticsData(e.target.value, 'caliber1');
     this.setState({
       caliber1: e.target.value
+    });
+  }
+
+  handleChangeCompareSwitch(e) {
+    this.setState({
+      compare: !this.state.compare
     });
   }
 
@@ -148,6 +156,14 @@ export default class Charts extends React.Component {
                     <option value="6.5mm Creedmoor">6.5mm Creedmoor</option>
                     <option value=".50 BMG">.50 BMG</option>
                   </Form.Control>
+                </Form.Group>
+                <Form.Group>
+                  <Form.Check
+                    type="switch"
+                    id="compare-switch"
+                    label="Compare"
+                    onChange={this.handleChangeCompareSwitch}
+                  />
                 </Form.Group>
               </Form>
             </Col>
