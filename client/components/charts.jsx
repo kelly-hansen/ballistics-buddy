@@ -53,6 +53,9 @@ export default class Charts extends React.Component {
       })
       .catch(err => {
         console.error(err);
+        this.setState({
+          status: 'error'
+        });
       });
   }
 
@@ -61,56 +64,6 @@ export default class Charts extends React.Component {
   }
 
   render() {
-    const dummyData = {
-      caliber: '.308 Winchester',
-      ballisticsData: [
-        {
-          distance: 0,
-          bulletDrop: -1.5
-        },
-        {
-          distance: 100,
-          bulletDrop: 0
-        },
-        {
-          distance: 200,
-          bulletDrop: -4
-        },
-        {
-          distance: 300,
-          bulletDrop: -14
-        },
-        {
-          distance: 400,
-          bulletDrop: -32
-        },
-        {
-          distance: 500,
-          bulletDrop: -59
-        },
-        {
-          distance: 600,
-          bulletDrop: -96
-        },
-        {
-          distance: 700,
-          bulletDrop: -145
-        },
-        {
-          distance: 800,
-          bulletDrop: -208
-        },
-        {
-          distance: 900,
-          bulletDrop: -289
-        },
-        {
-          distance: 1000,
-          bulletDrop: -390
-        }
-      ]
-    };
-
     const dummyData2 = {
       caliber: '.338 Lapua Magnum',
       ballisticsData: [
@@ -167,6 +120,16 @@ export default class Charts extends React.Component {
         <Row className="mt-5">
           <Col className="mt-5 d-flex justify-content-center">
             <Spinner animation="grow" variant="light" />
+          </Col>
+        </Row>
+      );
+    } else if (this.state.status === 'error') {
+      content = (
+        <Row className="mt-5 d-flex justify-content-center">
+          <Col md={8} lg={6}>
+            <p className="text-center">
+              Unable to retrieve ballistics data at this time
+            </p>
           </Col>
         </Row>
       );
