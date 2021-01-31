@@ -1,8 +1,13 @@
 require('dotenv/config');
+const pg = require('pg');
 const express = require('express');
 const staticMiddleware = require('./static-middleware');
 const ClientError = require('./client-error');
 const errorMiddleware = require('./error-middleware');
+
+const db = new pg.Pool({
+  connectionString: process.env.DATABASE_URL
+});
 
 const app = express();
 
@@ -21,9 +26,14 @@ app.get('/api/ballistics-data', (req, res, next) => {
     select "distance", "bulletDrop"
     from "ballisticsData"
     join "calibers" using ("caliberId")
-    where "caliberId" = $1;
+    where "caliber" = $1;
   `;
   const params = [caliber];
+  db.query(sql, params)
+    .then(result => {
+      res.status(200).json(result.rows);
+    })
+    .catch(err => next(err));
 });
 
 app.use(errorMiddleware);
