@@ -1,46 +1,46 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import AppContext from '../lib/app-context';
 
-export default class BallisticsTable extends React.Component {
-  render() {
-    const tableData = this.props.caliber1Data.ballisticsData.map((dataItem, i) => {
-      let adjustment;
-      if (dataItem.distance === 0) {
-        adjustment = '-';
-      } else {
-        const distanceMultiplier = dataItem.distance / 100;
-        if (this.context.units === 'MOA') {
-          adjustment = dataItem.bulletDrop / distanceMultiplier / 1.047;
-        } else if (this.context.units === 'MRAD') {
-          adjustment = dataItem.bulletDrop / distanceMultiplier / 3.6;
-        }
-        adjustment = -adjustment.toFixed(2);
+export default function BallisticsTable(props) {
+  const tableData = props.caliber1Data.ballisticsData.map((dataItem, i) => {
+    let adjustment;
+    if (dataItem.distance === 0) {
+      adjustment = '-';
+    } else {
+      const distanceMultiplier = dataItem.distance / 100;
+      const { units } = useContext(AppContext);
+      if (units === 'MOA') {
+        adjustment = dataItem.bulletDrop / distanceMultiplier / 1.047;
+      } else if (units === 'MRAD') {
+        adjustment = dataItem.bulletDrop / distanceMultiplier / 3.6;
       }
-
-      return (
-        <tr key={`dataItem${i}`}>
-          <td>{dataItem.distance}</td>
-          <td>{dataItem.bulletDrop}</td>
-          <td>{adjustment}</td>
-        </tr>
-      );
-    });
+      adjustment = -adjustment.toFixed(2);
+    }
 
     return (
-      <table className="ballistics-table text-center">
-        <thead>
-          <tr>
-            <th>Distance (yds)</th>
-            <th>Bullet Drop (in)</th>
-            <th>{this.context.units}</th>
-          </tr>
-        </thead>
-        <tbody>
-          {tableData}
-        </tbody>
-      </table>
+      <tr key={`dataItem${i}`}>
+        <td>{dataItem.distance}</td>
+        <td>{dataItem.bulletDrop}</td>
+        <td>{adjustment}</td>
+      </tr>
     );
-  }
-}
+  });
 
-BallisticsTable.contextType = AppContext;
+  return (
+    <table className="ballistics-table text-center">
+      <thead>
+        <tr>
+          <th>Distance (yds)</th>
+          <th>Bullet Drop (in)</th>
+          <AppContext.Consumer>
+            {value => <th>{value.units}</th>}
+          </AppContext.Consumer>
+
+        </tr>
+      </thead>
+      <tbody>
+        {tableData}
+      </tbody>
+    </table>
+  );
+}
