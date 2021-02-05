@@ -1,63 +1,50 @@
-import React from 'react';
+import React, { useState, useContext } from 'react';
 import AppContext from '../lib/app-context';
 import UnitsModal from '../components/units-modal';
 import SafetyModal from '../components/safety-modal';
 import DataTabs from '../components/data-tabs';
 
-export default class Home extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      showUnitsModal: false,
-      showSafetyModal: false
-    };
-    this.setUnits = this.setUnits.bind(this);
-    this.toggleUnitsModal = this.toggleUnitsModal.bind(this);
-    this.toggleSafetyModal = this.toggleSafetyModal.bind(this);
-  }
+export default function Home() {
+  const [showUnitsModal, setShowUnitsModal] = useState(false);
+  const [showSafetyModal, setShowSafetyModal] = useState(false);
 
-  setUnits(e) {
-    this.context.setUnits(e.target.textContent);
+  const { units, changeUnits } = useContext(AppContext);
+
+  function handleChangeUnits(e) {
+    changeUnits(e.target.textContent);
     e.target.blur();
   }
 
-  toggleUnitsModal() {
-    this.setState({
-      showUnitsModal: !this.state.showUnitsModal
-    });
+  function toggleUnitsModal() {
+    setShowUnitsModal(prev => !prev);
   }
 
-  toggleSafetyModal() {
-    this.setState({
-      showSafetyModal: !this.state.showSafetyModal
-    });
+  function toggleSafetyModal() {
+    setShowSafetyModal(prev => !prev);
   }
 
-  render() {
-    return (
-      <>
-        <header>
-          <div className="overlay d-flex flex-column align-items-center justify-content-around">
-            <img src="./bblogo.png" alt="Ballistics Buddy logo" />
-            <div className="text-center">
-              <p>Select Units:</p>
-              <button className={`mr-3 general-button units-button${this.context.units === 'MOA' ? ' selected' : ''}`} onClick={this.setUnits}>MOA</button>
-              <button className={`general-button units-button${this.context.units === 'MRAD' ? ' selected' : ''}`} onClick={this.setUnits}>MRAD</button>
-              <div className="d-flex justify-content-center">
-                <div className="units-question mt-3" onClick={this.toggleUnitsModal}>?</div>
-              </div>
-            </div>
-            <div>
-              <p className="m-0 text-center">Remember to always use</p>
-              <p className="safe-shooting m-0 text-center" onClick={this.toggleSafetyModal}>Safe Shooting Practices</p>
+  return (
+    <>
+      <header>
+        <div className="overlay d-flex flex-column align-items-center justify-content-around">
+          <img src="./bblogo.png" alt="Ballistics Buddy logo" />
+          <div className="text-center">
+            <p>Select Units:</p>
+            <button className={`mr-3 general-button units-button${units === 'MOA' ? ' selected' : ''}`} onClick={handleChangeUnits}>MOA</button>
+            <button className={`general-button units-button${units === 'MRAD' ? ' selected' : ''}`} onClick={handleChangeUnits}>MRAD</button>
+            <div className="d-flex justify-content-center">
+              <div className="units-question mt-3" onClick={toggleUnitsModal}>?</div>
             </div>
           </div>
-        </header>
-        <UnitsModal show={this.state.showUnitsModal} toggle={this.toggleUnitsModal} />
-        <SafetyModal show={this.state.showSafetyModal} toggle={this.toggleSafetyModal} />
-        {this.context.units && <DataTabs />}
-      </>
-    );
-  }
+          <div>
+            <p className="m-0 text-center">Remember to always use</p>
+            <p className="safe-shooting m-0 text-center" onClick={toggleSafetyModal}>Safe Shooting Practices</p>
+          </div>
+        </div>
+      </header>
+      <UnitsModal show={showUnitsModal} toggle={toggleUnitsModal} />
+      <SafetyModal show={showSafetyModal} toggle={toggleSafetyModal} />
+      {units && <DataTabs />}
+    </>
+  );
 }
-Home.contextType = AppContext;
