@@ -25,36 +25,35 @@ export default function Charts() {
     setCompare(prev => !prev);
   }
 
-  function getBallisticsData(caliber, designation) {
-    fetch('/api/ballistics-data', {
+  async function getBallisticsData(caliber, designation) {
+    const response = await fetch('/api/ballistics-data', {
       headers: {
         'Content-Type': 'application/json',
         caliber: caliber
       }
-    })
-      .then(res => res.json())
-      .then(result => {
-        const ballisticsData = result.map(dataItem => {
-          return {
-            distance: dataItem.distance,
-            bulletDrop: parseFloat(dataItem.bulletDrop, 10)
-          };
-        });
-        const caliberData = {
-          caliber,
-          ballisticsData
+    });
+    if (!response.ok) {
+      console.error(response.status);
+      setStatus('error');
+    } else {
+      const result = await response.json();
+      const ballisticsData = result.map(dataItem => {
+        return {
+          distance: dataItem.distance,
+          bulletDrop: parseFloat(dataItem.bulletDrop, 10)
         };
-        if (designation === 'caliber1') {
-          setCaliber1Data(caliberData);
-          setStatus('loaded');
-        } else if (designation === 'caliber2') {
-          setCaliber2Data(caliberData);
-        }
-      })
-      .catch(err => {
-        console.error(err);
-        setStatus('error');
       });
+      const caliberData = {
+        caliber,
+        ballisticsData
+      };
+      if (designation === 'caliber1') {
+        setCaliber1Data(caliberData);
+        setStatus('loaded');
+      } else if (designation === 'caliber2') {
+        setCaliber2Data(caliberData);
+      }
+    }
   }
 
   useEffect(() => {
