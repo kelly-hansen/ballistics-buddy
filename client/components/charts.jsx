@@ -26,16 +26,13 @@ export default function Charts() {
   }
 
   async function getBallisticsData(caliber, designation) {
-    const response = await fetch('/api/ballistics-data', {
-      headers: {
-        'Content-Type': 'application/json',
-        caliber: caliber
-      }
-    });
-    if (!response.ok) {
-      console.error(response.status);
-      setStatus('error');
-    } else {
+    try {
+      const response = await fetch('/api/ballistics-data', {
+        headers: {
+          'Content-Type': 'application/json',
+          caliber: caliber
+        }
+      });
       const result = await response.json();
       const ballisticsData = result.map(dataItem => {
         return {
@@ -53,6 +50,9 @@ export default function Charts() {
       } else if (designation === 'caliber2') {
         setCaliber2Data(caliberData);
       }
+    } catch (err) {
+      setStatus('error');
+      console.error(err);
     }
   }
 
