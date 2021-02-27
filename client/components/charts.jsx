@@ -25,36 +25,35 @@ export default function Charts() {
     setCompare(prev => !prev);
   }
 
-  function getBallisticsData(caliber, designation) {
-    fetch('/api/ballistics-data', {
-      headers: {
-        'Content-Type': 'application/json',
-        caliber: caliber
-      }
-    })
-      .then(res => res.json())
-      .then(result => {
-        const ballisticsData = result.map(dataItem => {
-          return {
-            distance: dataItem.distance,
-            bulletDrop: parseFloat(dataItem.bulletDrop, 10)
-          };
-        });
-        const caliberData = {
-          caliber,
-          ballisticsData
-        };
-        if (designation === 'caliber1') {
-          setCaliber1Data(caliberData);
-          setStatus('loaded');
-        } else if (designation === 'caliber2') {
-          setCaliber2Data(caliberData);
+  async function getBallisticsData(caliber, designation) {
+    try {
+      const response = await fetch('/api/ballistics-data', {
+        headers: {
+          'Content-Type': 'application/json',
+          caliber: caliber
         }
-      })
-      .catch(err => {
-        console.error(err);
-        setStatus('error');
       });
+      const result = await response.json();
+      const ballisticsData = result.map(dataItem => {
+        return {
+          distance: dataItem.distance,
+          bulletDrop: parseFloat(dataItem.bulletDrop, 10)
+        };
+      });
+      const caliberData = {
+        caliber,
+        ballisticsData
+      };
+      if (designation === 'caliber1') {
+        setCaliber1Data(caliberData);
+        setStatus('loaded');
+      } else if (designation === 'caliber2') {
+        setCaliber2Data(caliberData);
+      }
+    } catch (err) {
+      setStatus('error');
+      console.error(err);
+    }
   }
 
   useEffect(() => {
